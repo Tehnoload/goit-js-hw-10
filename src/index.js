@@ -35,19 +35,21 @@ breedSelect.addEventListener('change', onSelect);
 
 function onSelect() {
   const selectedBreedId = breedSelect.value;
-
+  breedSelect.style.display = 'none';
   loader.style.display = 'block';
   catInfo.style.display = 'none';
   error.style.display = 'none';
   fetchCatByBreed(selectedBreedId)
     .then(data => {
       catInfo.innerHTML = createMarkup(data);
+      breedSelect.style.display = 'block';
       loader.style.display = 'none';
       catInfo.style.display = 'flex';
     })
     .catch(error => {
       Notiflix.Notify.failure(`❌ Rejected promise ${error}`);
       loader.style.display = 'none';
+      breedSelect.style.display = 'block';
       error.style.display = 'block';
     });
 }
