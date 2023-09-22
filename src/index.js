@@ -13,7 +13,7 @@ const breedSelect = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
 const catInfo = document.querySelector('.cat-info');
 const error = document.querySelector('.error');
-
+loader.style.display = 'block';
 fetchBreeds()
   .then(data =>
     data.forEach(breed => {
@@ -21,6 +21,7 @@ fetchBreeds()
       option.value = breed.id;
       option.textContent = breed.name;
       breedSelect.appendChild(option);
+      loader.style.display = 'none';
     })
   )
 
